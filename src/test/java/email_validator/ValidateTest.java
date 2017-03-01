@@ -47,7 +47,6 @@ public class ValidateTest {
 		assertEquals(3,result);
 	}
 	
-	
 	/* domain not end with .com or .ca
 	 * 4 rules pass
 	 */
