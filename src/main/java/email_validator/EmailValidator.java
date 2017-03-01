@@ -22,6 +22,7 @@ public class EmailValidator {
 /*
  * own rules:
  */
+
 			if(email.matches("^[^<>%$]*$")) //if there is not included special character
 				count++;
 			
