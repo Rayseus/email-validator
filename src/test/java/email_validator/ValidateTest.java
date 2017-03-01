@@ -6,44 +6,55 @@ import org.junit.Test;
 
 public class ValidateTest {
 
-	//one single @ and at least one . in the email string
+	/* one single @ and at least one . in the email string and no space, special character,
+	 * end with .com or .ca
+	 * 5 rules pass
+	 */
 	@Test
 	public void testValidator1() {
 		EmailValidator test = new EmailValidator();
 		int result = test.validate("123@dal.ca");
-		assertEquals(2,result);
+		assertEquals(5,result);
 	}
 	
-	//no @ and at least one . in the email string
+	/* include special character
+	 * 4 rules pass
+	 */
 	@Test
 	public void testValidator2() {
 		EmailValidator test = new EmailValidator();
-		int result = test.validate("123dal..ca");
-		assertEquals(1,result);
+		int result = test.validate("%123@dal.ca");
+		assertEquals(4,result);
 	}
 	
-	//one single @ and no . in the email string
+	/* include space
+	 * 4 rules pass
+	 */
 	@Test
 	public void testValidator3() {
 		EmailValidator test = new EmailValidator();
-		int result = test.validate("123@dalca");
-		assertEquals(1,result);
+		int result = test.validate("123 @dal.ca");
+		assertEquals(4,result);
 	}
 	
-	//more than one @ and at least one . in the email string
+	/* include special character and space
+	 * 3 rules pass
+	 */
 	@Test
 	public void testValidator4() {
 		EmailValidator test = new EmailValidator();
-		int result = test.validate("123@@dal.ca");
-		assertEquals(1,result);
+		int result = test.validate("%123 @dal.ca");
+		assertEquals(3,result);
 	}
 	
-	//either @ or no . in the email string
+	
+	/* domain not end with .com or .ca
+	 * 4 rules pass
+	 */
 	@Test
 	public void testValidator5() {
 		EmailValidator test = new EmailValidator();
-		int result = test.validate("123dalca");
-		assertEquals(0,result);
+		int result = test.validate("123@dal.cn");
+		assertEquals(4,result);
 	}
-
 }
