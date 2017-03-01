@@ -29,7 +29,7 @@ public class EmailValidator {
 			if(email.matches("^[^\\s]*$")) //if there is not included space
 				count++;
 			
-			if(email.matches("^.*[.com|ca]$")) //if there is end with .com or .ca
+			if(email.endsWith(".com") || email.endsWith(".ca")) //if there is end with .com or .ca
 				count++;
 			
 			return count;
